@@ -1,0 +1,111 @@
+Monitoring Perimeter Sensors in a Facility
+Imagine a high-security facility equipped with perimeter sensors arranged in a grid-like structure. The sensors are placed in a matrix formation, where each sensor records a security reading. The security team needs to monitor the readings of the sensors located along the boundary of the facility (the perimeter), as these sensors are crucial for identifying potential breaches or intrusions.
+
+Write a program to print the readings from all the boundary sensors in the order they appear, starting from the top-left corner, moving right along the top row, down the right column, left along the bottom row, and up the left column.
+
+
+
+Input Format
+
+The first line contains two integers, m (number of rows) and n (number of columns).
+The next m lines contain n integers each, representing the security readings of the sensors in the matrix.
+
+
+Output Format
+
+Output the boundary sensor readings in a single line, separated by spaces.
+
+
+Sample Input
+
+4 4
+
+1 2 3 4
+
+5 6 7 8
+
+9 10 11 12
+
+13 14 15 16
+
+
+
+Sample Output
+
+1 2 3 4 8 12 16 15 14 13 9 5
+
+
+
+Explanation
+
+Input Matrix (Sensor Readings)
+
+1 2 3 4
+
+5 6 7 8
+
+9 10 11 12
+
+13 14 15 16
+
+The boundary elements are collected in the following order:
+
+Top row: 1 2 3 4
+
+Right column: 8 12 16
+
+Bottom row (in reverse): 15 14 13
+
+Left column (in reverse): 9 5
+
+
+
+Output
+
+The boundary sensor readings are printed in a single line.
+
+\\CODE
+import java.util.*;
+
+public class BoundaryTraversal {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+
+        int[][] matrix = new int[m][n];
+
+        // Input matrix
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Top row
+        for (int j = 0; j < n; j++) {
+            System.out.print(matrix[0][j] + " ");
+        }
+
+        // Right column
+        for (int i = 1; i < m; i++) {
+            System.out.print(matrix[i][n - 1] + " ");
+        }
+
+        // Bottom row (only if more than 1 row)
+        if (m > 1) {
+            for (int j = n - 2; j >= 0; j--) {
+                System.out.print(matrix[m - 1][j] + " ");
+            }
+        }
+
+        // Left column (only if more than 1 column)
+        if (n > 1) {
+            for (int i = m - 2; i > 0; i--) {
+                System.out.print(matrix[i][0] + " ");
+            }
+        }
+
+    }
+}
