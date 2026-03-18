@@ -1,0 +1,134 @@
+Transposing the Garden Layout
+In the beautiful village of Greenvale, Emma is designing her new garden. She has arranged the plants in a matrix format where each cell represents a specific type of plant. To optimize the space and aesthetics of her garden, she decides to create a transposed layout. Transposing a matrix involves flipping it over its diagonal, effectively turning rows into columns and vice versa.
+
+Your task is to help Emma write a program that takes her garden layout matrix as input and outputs the transposed version of that matrix.
+
+
+
+Problem Statement
+
+Write a program that reads a square matrix (garden layout) and outputs its transpose.
+
+
+
+Input Format
+
+The first line contains an integer n, representing the number of rows and columns of the square matrix (n x n).
+The next n lines contain space-separated integers representing the matrix.
+
+
+Constraints
+
+The matrix is a square matrix (i.e., the number of rows equals the number of columns).
+
+
+Output Format
+
+Print the transposed matrix, with each row on a new line and elements separated by spaces.
+
+
+
+Example 1
+
+Sample Input 1
+
+3
+
+1 2 3
+
+4 5 6
+
+7 8 9
+
+
+
+Sample Output 1
+
+1 4 7
+
+2 5 8
+
+3 6 9
+
+
+
+Explanation
+
+The original matrix is:
+
+1 2 3
+
+4 5 6
+
+7 8 9
+
+The transposed matrix is:
+
+1 4 7
+
+2 5 8
+
+3 6 9
+
+
+
+Example 2
+
+Sample Input 2
+
+2
+
+10 20
+
+30 40
+
+
+
+Sample Output 2
+
+10 30
+
+20 40
+
+
+
+Explanation
+
+The original matrix is:
+
+10 20
+
+30 40
+
+The transposed matrix is:
+
+10 30
+
+20 40
+
+\\CODE
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[][] matrix = new int[n][n];
+
+        // Input matrix
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Transpose and print
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(matrix[j][i] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
