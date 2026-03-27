@@ -1,0 +1,100 @@
+Take input level wise and then print
+
+You are given the level-order representation of a Generic Tree. In this representation, each node is followed by an integer that indicates the number of children that node has. The children of the node are listed immediately after this count. The input is read sequentially and the tree is constructed in level order. After constructing the tree, your task is to print the level order traversal of the tree.
+
+Level order traversal means printing the nodes level by level from left to right.
+
+
+
+Input Format
+
+The input consists of a sequence of integers representing the level-order construction of a generic tree.
+
+The first integer represents the root node value.
+
+The next integer represents the number of children of the root node.
+
+For every node encountered in level order, the input provides:
+
+The number of children of that node
+Followed by the values of its children
+If a node has no children, the value 0 will be given.
+
+
+
+Output Format
+
+Print the level order traversal of the constructed generic tree as space-separated integers.
+
+
+
+Example 1
+
+Sample Input 1
+
+10 3 20 30 40 2 50 60 0 0 0 0
+
+
+
+Sample Output 1
+
+10 20 30 40 50 60
+
+
+
+Example 2
+
+Sample Input 2
+
+15 2 25 35 1 45 0 0
+
+
+
+Sample Output 2
+
+15 25 35 45
+
+Code
+import java.util.*;
+
+class Node{
+  int data;
+  ArrayList<Node> children;
+
+  Node(int data){
+    this.data= data;
+    children= new ArrayList<>();
+  }
+}
+class Main{
+  public static void main(String[] args){
+    Scanner sc= new Scanner(System.in);
+    int n=sc.nextInt();
+    Node root= new Node(n);
+    Queue<Node> q= new LinkedList<>();
+    q.add(root);
+
+    while(!q.isEmpty()){
+      Node temp= q.poll();
+      int chi_n=sc.nextInt();
+
+      for(int i=0; i<chi_n; i++){
+        int val= sc.nextInt();
+        Node child= new Node(val);
+        temp.children.add(child);
+          q.add(child);
+      }
+    }
+    Queue<Node> q2=new LinkedList<>();
+    q2.add(root);
+
+    while(!q2.isEmpty()){
+      Node temp= q2.poll();
+      System.out.print(temp.data+" ");
+      for(Node c: temp.children){
+        q2.add(c);
+      }
+    }
+    
+  }
+}
